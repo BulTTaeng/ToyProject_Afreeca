@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        // version catalog 적용
+        classpath(deps.android.gradle)
+        classpath(deps.kotlin.plugin)
+        classpath(deps.androidx.navigation.safe.args.gradle.plugin)
+        classpath(deps.hilt.android.gradle.plugin)
+    }
+
+}
+
+plugins {
+    id 'com.android.application' version '7.2.2' apply false
+    id 'com.android.library' version '7.2.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
