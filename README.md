@@ -21,7 +21,7 @@
 - EventFlow 추가
 - repeatOnLifeCycle 추가 
 - 방송 데이터 가져오기
-- 방송 데이터 view적용
+- 방송 데이터 view적용z
 - paging 적용
 - swipe view 추가
 
