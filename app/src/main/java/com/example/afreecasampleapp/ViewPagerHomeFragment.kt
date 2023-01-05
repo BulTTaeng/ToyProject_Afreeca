@@ -37,7 +37,6 @@ class ViewPagerHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewPagerHomeBinding.inflate(inflater, container, false)
-        binding.viewPagerHome.adapter = ViewPagerAdapter(this)
         return binding.root
     }
 
@@ -45,7 +44,6 @@ class ViewPagerHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         repeatOnStarted {
             viewModel.broadData.collectLatest { event ->
-                //binding.progressBarMountain.visibility = View.VISIBLE
                 handleEvent(event)
             }
         }
@@ -54,6 +52,8 @@ class ViewPagerHomeFragment : Fragment() {
     }
 
     private fun setAdapterText(categories : List<BroadCategory>){
+        binding.viewPagerHome.adapter = ViewPagerAdapter(this)
+
         TabLayoutMediator(binding.tabar, binding.viewPagerHome) { tab, position ->
             tab.text = getTabTitle(position)
         }.attach()
