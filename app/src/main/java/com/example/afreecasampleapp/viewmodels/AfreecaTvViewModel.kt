@@ -1,6 +1,7 @@
 package com.example.afreecasampleapp.viewmodels
 
 import android.util.Log
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,6 +32,9 @@ class AfreecaTvViewModel @Inject constructor(
     var currentCategoryId : Int? = null
     private var currentBroadLists: Flow<PagingData<Broad>>? = null
 
+    val isLoading = ObservableBoolean()
+
+
     fun getCategories(){
         viewModelScope.launch {
             repository.getCategories().collectLatest {
@@ -41,10 +45,12 @@ class AfreecaTvViewModel @Inject constructor(
     }
 
     fun getBroadList(categoryId: Int): Flow<PagingData<Broad>> {
+        isLoading.set(true)
         currentCategoryId = categoryId
         val newResult: Flow<PagingData<Broad>> =
             repository.getBroadList(categoryId).cachedIn(viewModelScope)
         currentBroadLists = newResult
+        isLoading.set(false)
         return newResult
     }
 

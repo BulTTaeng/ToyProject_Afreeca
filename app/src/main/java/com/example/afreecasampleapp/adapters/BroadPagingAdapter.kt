@@ -10,6 +10,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.afreecasampleapp.ViewPagerHomeFragmentDirections
 import com.example.afreecasampleapp.data.Broad
 import com.example.afreecasampleapp.databinding.ItemBroadViewBinding
 
@@ -38,6 +39,7 @@ class BroadPagingAdapter : PagingDataAdapter<Broad, BroadPagingAdapter.BroadView
         init {
             itemView.setOnClickListener {
                 val navController = Navigation.findNavController(itemView)
+                navController.navigate(ViewPagerHomeFragmentDirections.actionViewPagerHomeFragmentToDetailFragment())
             }
         }
 

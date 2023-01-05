@@ -25,6 +25,8 @@ fragment = "1.4.1"
 viewPager = "1.0.0"
 circleImage = "3.1.0"
 shimmer = "0.5.0"
+swipe = "1.1.0"
+
 
 [libraries]
 kotlin-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -95,6 +97,9 @@ circle-imageview = {module = "de.hdodenhof:circleimageview" , version.ref = "cir
 
 #shimmer
 facebook-shimmer = {module = "com.facebook.shimmer:shimmer", version.ref = "shimmer"}
+
+#swipeview
+androidx-swipe = {module = "androidx.swiperefreshlayout:swiperefreshlayout" , version.ref = "swipe"}
 
 [bundles]
 coroutines = ["kotlinx-coroutine-core" , "kotlinx-coroutine"]

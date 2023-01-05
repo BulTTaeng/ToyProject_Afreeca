@@ -37,6 +37,8 @@ class ThirdFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentThirdBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.fragment = this
         return binding.root
     }
 
@@ -52,7 +54,7 @@ class ThirdFragment : Fragment() {
         binding.recyclerThird.layoutManager = LinearLayoutManager(mainActivity)
     }
 
-    private fun getCategoryBroads(categoryId: Int) {
+    fun getCategoryBroads(categoryId: Int) {
         broadListJob?.cancel()
         broadListJob = lifecycleScope.launch {
             viewModel.getBroadList(categoryId).collectLatest {
