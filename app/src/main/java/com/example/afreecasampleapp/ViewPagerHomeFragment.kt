@@ -44,7 +44,6 @@ class ViewPagerHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         repeatOnStarted {
             viewModel.broadData.collectLatest { event ->
-                //binding.progressBarMountain.visibility = View.VISIBLE
                 handleEvent(event)
             }
         }

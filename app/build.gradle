@@ -79,4 +79,6 @@ dependencies {
     implementation(deps.circle.imageview)
 
     implementation(deps.facebook.shimmer)
+
+    implementation(deps.androidx.swipe)
 }
