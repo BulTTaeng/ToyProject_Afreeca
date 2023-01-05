@@ -20,6 +20,10 @@
 - dynamic하게 category 호출
 - EventFlow 추가
 - repeatOnLifeCycle 추가 
+- 방송 데이터 가져오기
+- 방송 데이터 view적용
+- paging 적용
+- swipe view 추가
 
 
 </details>
@@ -52,21 +56,21 @@
 잦은 network 작업에 대한 부담은 paging을 적용하여 해결할 수 있음  
 
 
-==> 1번 방법 채택  
+==> 1번 방법 채택
 
 </br>
-
-하지만 카테고리를 누를 때 마다 로딩 시간이 사용해 보니 느리게 느껴짐  
 
 Loading 시간을 최대한 줄이기 위해서 각 카테고리마다 하나의 Fragment 배정
 
 상단의 tabar -> TabLayout 사용
-ViewPager로 넘어가는 애니메이션 적용 & Framgent 관리
+ViewPager로 넘어가는 애니메이션 추가 & Framgent 관리
 
 ViewPager2 + TabLayout 구조  
 
 카테고리는 고정값이 아님, 따라서 Fragment를 api response에 따라서 구성해야 함.
 
+
+새로운 데이터를 긁어 오기 위해, swipeview 추가
 
 
 ### 상세 페이지  
@@ -77,10 +81,7 @@ ViewPager2 + TabLayout 구조
 2. Fragment
 
 
-메인 페이지에서 viewPager를 쓰는 방법을 채택한 이상, 구조 상 Fragment가 가능하다.  
-
-</br>
-
+메인 페이지에서 2번의 방법을 채택한 이상, 구조 상 Fragment가 가능하다.  
 따라서 화면 전환 & overhead를 고려 Fragment를 사용하기로 결정.  
 또한 safe args 사용도 가능.  
 
@@ -102,3 +103,5 @@ MVVM패턴으로 작성
 
 ---
 ## ISSUE
+- First, Second, Third Fragment 코드 중복이 너무 많음.  
+Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.
