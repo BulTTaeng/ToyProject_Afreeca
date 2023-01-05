@@ -20,6 +20,9 @@
 - dynamic하게 category 호출
 - EventFlow 추가
 - repeatOnLifeCycle 추가 
+- 방송 데이터 가져오기
+- 방송 데이터 view적용z
+- paging 적용
 - swipe view 추가
 
 
@@ -55,6 +58,7 @@
 
 ==> 1번 방법 채택
 
+</br>
 
 Loading 시간을 최대한 줄이기 위해서 각 카테고리마다 하나의 Fragment 배정
 
@@ -99,3 +103,5 @@ MVVM패턴으로 작성
 
 ---
 ## ISSUE
+- First, Second, Third Fragment 코드 중복이 너무 많음.  
+Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.
