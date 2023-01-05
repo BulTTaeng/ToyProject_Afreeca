@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AfreecaSampleApp</string>
+    <string name="talk_cam">토크/캠방</string>
+    <string name="travel">여행</string>
+    <string name="mukbang_cook">먹방/쿡방</string>
 </resources>
