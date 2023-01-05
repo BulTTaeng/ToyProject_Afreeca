@@ -75,4 +75,8 @@ dependencies {
     implementation(deps.androidx.lifecycle.viewmodel.ktx)
 
     implementation(deps.androidx.fragment.ktx)
+
+    implementation(deps.circle.imageview)
+
+    implementation(deps.facebook.shimmer)
 }

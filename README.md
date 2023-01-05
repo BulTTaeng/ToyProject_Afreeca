@@ -70,8 +70,6 @@ ViewPager2 + TabLayout 구조
 
 
 
-
-
 ---  
 
 ## 디자인 패턴   
