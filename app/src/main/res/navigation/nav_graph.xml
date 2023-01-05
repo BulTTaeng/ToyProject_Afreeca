@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/viewPagerHomeFragment">
 
     <fragment
         android:id="@+id/viewPagerHomeFragment"
         android:name="com.example.afreecasampleapp.ViewPagerHomeFragment"
-        android:label="ViewPagerHomeFragment" />
+        android:label="ViewPagerHomeFragment"
+        tools:layout="@layout/fragment_view_pager_home"/>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.afreecasampleapp.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail"/>
 </navigation>
