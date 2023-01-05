@@ -15,13 +15,13 @@ interface AfreecaTvApiService {
     @GET("broad/list")
     suspend fun broadList(
         @Query("client_id") clientId: String = "af_mobilelab_dev_e0f147f6c034776add2142b425e81777",
-        @Query("locale") locale: String = "ko_KR"
+        @Query("select_value") select_value : Int
     ): AfreecaBroadListResponse
 
     @GET("broad/category/list")
     suspend fun broadCategoryList(
         @Query("client_id") clientId: String = "af_mobilelab_dev_e0f147f6c034776add2142b425e81777",
-        @Query("select_value") select_value : Int
+        @Query("locale") locale: String = "ko_KR"
     ): AfreecaBroadCategoryListResponse
 
     companion object {

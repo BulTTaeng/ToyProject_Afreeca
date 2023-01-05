@@ -17,7 +17,9 @@
 
 `2023-01-05`  
 - view 구조 설정
-
+- dynamic하게 category 호출
+- EventFlow 추가
+- repeatOnLifeCycle 추가 
 
 
 </details>
