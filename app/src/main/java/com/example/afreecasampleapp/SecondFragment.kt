@@ -5,17 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.afreecasampleapp.databinding.FragmentTravelBinding
+import com.example.afreecasampleapp.databinding.FragmentSecondBinding
 
-class TravelFragment : Fragment() {
-    private lateinit var binding: FragmentTravelBinding
+class SecondFragment : Fragment() {
+    private lateinit var binding: FragmentSecondBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTravelBinding.inflate(inflater, container, false)
+        binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

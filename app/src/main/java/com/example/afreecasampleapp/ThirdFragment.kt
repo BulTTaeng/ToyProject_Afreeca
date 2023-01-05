@@ -5,19 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.afreecasampleapp.databinding.FragmentMukBangBinding
+import com.example.afreecasampleapp.databinding.FragmentThirdBinding
 
 
-class TalkCamFragment : Fragment() {
+class ThirdFragment : Fragment() {
 
-    private lateinit var binding: FragmentMukBangBinding
+    private lateinit var binding: FragmentThirdBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMukBangBinding.inflate(inflater, container, false)
+        binding = FragmentThirdBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+
 }

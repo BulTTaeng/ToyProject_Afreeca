@@ -15,6 +15,11 @@
 - init
 - Api 호출 부, data class 구현
 
+`2023-01-05`  
+- view 구조 설정
+
+
+
 </details>
 
 ---  
@@ -53,7 +58,9 @@ Loading 시간을 최대한 줄이기 위해서 각 카테고리마다 하나의
 상단의 tabar -> TabLayout 사용
 ViewPager로 넘어가는 애니메이션 추가 & Framgent 관리
 
-ViewPager2 + TabLayout 구조
+ViewPager2 + TabLayout 구조  
+
+카테고리는 고정값이 아님, 따라서 Fragment를 api response에 따라서 구성해야 함.
 
 
 ### 상세 페이지  
