@@ -6,7 +6,9 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.example.afreecasampleapp.databinding.ActivityMainBinding
 import com.example.afreecasampleapp.viewmodels.AfreecaTvViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     val viewModel : AfreecaTvViewModel by viewModels()
