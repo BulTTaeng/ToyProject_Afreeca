@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="broad"
+            type="com.example.afreecasampleapp.data.Broad"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:id="@+id/img_broadThumb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:imageFromUrl="@{broad.broad_thumb}"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_broadTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="5"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txt_broadTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{broad.broad_title}"
+            app:layout_constraintStart_toEndOf="@+id/img_broadThumb"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_weight="5"
+            tools:text="나의 ㅁㅁㅁ 먹방" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id ="@+id/img_profileInRecycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_broadThumb"
+            app:layout_constraintTop_toBottomOf="@id/txt_broadTitle"
+            tools:srcCompat="@tools:sample/avatars"/>
+
+        <LinearLayout
+            android:id="@+id/linear_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0.3"
+            android:orientation="vertical"
+            app:layout_constraintVertical_weight="5"
+            app:layout_constraintBottom_toBottomOf="@+id/img_broadThumb"
+            app:layout_constraintStart_toEndOf="@+id/img_broadThumb"
+            app:layout_constraintTop_toBottomOf="@id/txt_broadTitle">
+
+            <TextView
+                android:id="@+id/txt_userNickNameInRecycler"
+                android:text="@{broad.user_nick}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="BJ이름" />
+
+            <LinearLayout
+                android:id="@+id/linear_name_viewer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/img_profileInRecycler"
+                app:layout_constraintTop_toBottomOf="@id/txt_broadTitle">
+
+                <ImageView
+                    android:id="@+id/img_viewers"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/viewers"/>
+
+                <TextView
+                    android:id="@+id/txt_viewerNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{broad.total_view_cnt}"
+                    tools:text="123123" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
