@@ -18,5 +18,10 @@
         android:id="@+id/detailFragment"
         android:name="com.example.afreecasampleapp.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail"/>
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="selectedBroad"
+            app:argType="com.example.afreecasampleapp.data.Broad"
+            app:nullable="true"/>
+    </fragment>
 </navigation>

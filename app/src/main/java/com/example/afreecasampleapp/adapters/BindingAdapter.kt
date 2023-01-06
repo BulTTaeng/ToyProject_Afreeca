@@ -15,13 +15,26 @@ fun bindIsGone(view: View, isGone: Boolean) {
     }
 }
 
-@BindingAdapter("imageFromUrl")
-fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
+@BindingAdapter("imageFromUrlHttp")
+fun bindImageFromUrlHttp(view: ImageView, imageUrl: String?) {
     if (imageUrl.isNullOrEmpty()) {
         return
     }
 
-    Glide.with(view)
+    Glide.with(view.context)
         .load("https:$imageUrl")
+        .into(view)
+}
+
+
+@BindingAdapter("imageFromUrlCircleCrop")
+fun bindImageFromUrlCircleCrop(view: ImageView, imageUrl: String?) {
+    if (imageUrl.isNullOrEmpty()) {
+        return
+    }
+
+    Glide.with(view.context)
+        .load("https:$imageUrl")
+        .circleCrop()
         .into(view)
 }

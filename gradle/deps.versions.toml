@@ -59,7 +59,8 @@ hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", vers
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 
 #glide
-git-glide = { module = 'com.github.bumptech.glide:glide' , version.ref = "glide"}
+git-glide = { module = "com.github.bumptech.glide:glide" , version.ref = "glide"}
+git-glide-bumptech = {module = "com.github.bumptech.glide:compiler" , version.ref = "glide"}
 
 #coroutine
 kotlinx-coroutine-core = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-core" , version.ref = "coroutine"}
