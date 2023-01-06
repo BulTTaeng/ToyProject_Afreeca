@@ -3,6 +3,7 @@ package com.example.afreecasampleapp.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.afreecasampleapp.api.AfreecaTvApiService
 import com.example.afreecasampleapp.data.Broad
 import com.example.afreecasampleapp.data.pagingsource.BroadPagingSource

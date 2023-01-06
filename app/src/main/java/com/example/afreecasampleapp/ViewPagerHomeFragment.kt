@@ -47,8 +47,14 @@ class ViewPagerHomeFragment : Fragment() {
                 handleEvent(event)
             }
         }
+        if(viewModel.shouldLoadCategory) {
+            viewModel.getCategories()
+            viewModel.shouldLoadCategory = false
+        }
+        else{
+            setAdapterText(viewModel.categoryInfo)
+        }
 
-        viewModel.getCategories()
     }
 
     private fun setAdapterText(categories : List<BroadCategory>){

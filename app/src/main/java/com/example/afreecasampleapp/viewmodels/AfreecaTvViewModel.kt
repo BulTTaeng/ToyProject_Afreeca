@@ -32,6 +32,8 @@ class AfreecaTvViewModel @Inject constructor(
     var currentCategoryId : Int? = null
     private var currentBroadLists: Flow<PagingData<Broad>>? = null
 
+    var shouldLoadCategory = true
+
     val isLoading = ObservableBoolean()
 
 
@@ -42,6 +44,7 @@ class AfreecaTvViewModel @Inject constructor(
                 _broadData.emit(Event.BroadCategories(it))
             }
         }
+        shouldLoadCategory = false
     }
 
     fun getBroadList(categoryId: Int): Flow<PagingData<Broad>> {

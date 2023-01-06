@@ -25,9 +25,9 @@
 - paging 적용
 - swipe view 추가
 
-
 `2023-01-06`  
 - 디테일 페이지 구현
+- glide error 해결
 
 </details>
 
@@ -108,3 +108,4 @@ MVVM패턴으로 작성
 ## ISSUE
 - First, Second, Third Fragment 코드 중복이 너무 많음.  
 Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.
+- Glide로 profile Image를 불러 올 때만 이상하게 random하게 안되는 현상이 있음 -> 실패하면 handler로 다시 Glide 요청하는 방식으로 해결
