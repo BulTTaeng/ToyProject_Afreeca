@@ -15,7 +15,7 @@
             android:id="@+id/img_broadThumb"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:imageFromUrl="@{broad.broad_thumb}"
+            app:imageFromUrlHttp="@{broad.broad_thumb}"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/txt_broadTitle"

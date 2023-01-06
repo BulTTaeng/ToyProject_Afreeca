@@ -5,7 +5,9 @@ import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,8 @@ import com.example.afreecasampleapp.data.Broad
 import com.example.afreecasampleapp.databinding.ItemBroadViewBinding
 
 class BroadPagingAdapter : PagingDataAdapter<Broad, BroadPagingAdapter.BroadViewHolder>(BroadDiffCallback()) {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BroadViewHolder {
         return BroadViewHolder(
@@ -36,17 +40,16 @@ class BroadPagingAdapter : PagingDataAdapter<Broad, BroadPagingAdapter.BroadView
     class BroadViewHolder(
         private val binding: ItemBroadViewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            itemView.setOnClickListener {
-                val navController = Navigation.findNavController(itemView)
-                navController.navigate(ViewPagerHomeFragmentDirections.actionViewPagerHomeFragmentToDetailFragment())
-            }
-        }
 
         fun bind(item: Broad) {
             binding.apply {
                 broad = item
                 executePendingBindings()
+            }
+
+            itemView.setOnClickListener{
+                val navController = itemView.findNavController()
+                navController.navigate(ViewPagerHomeFragmentDirections.actionViewPagerHomeFragmentToDetailFragment(item))
             }
         }
     }

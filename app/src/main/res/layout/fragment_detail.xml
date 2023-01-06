@@ -3,54 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="broadInfo"
+            type="com.example.afreecasampleapp.data.Broad"/>
+    </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id = "@+id/constraint_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:weightSum="10"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@id/img_thumb"
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:imageFromUrlCircleCrop="@{broadInfo.profile_img}"
+            app:layout_constraintBottom_toTopOf="@+id/img_thumb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight="5">
+            tools:src="@tools:sample/avatars" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                app:layout_constraintWidth_percent="0.5"
-                tools:src="@tools:sample/avatars"/>
+        <TextView
+            android:id="@+id/txt_userNickName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical | center_horizontal"
+            android:text="@{broadInfo.user_nick}"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile"
+            tools:text="김다미" />
 
-            <TextView
-                android:id="@+id/txt_userNickName"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textSize="20dp"
-                android:ellipsize="end"
-                android:textStyle="bold"
-                android:gravity="center_vertical | center_horizontal"
-                tools:text="김다미"/>
+        <TextView
+            android:id="@+id/txt_userId"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical | center_horizontal"
+            android:text="@{broadInfo.user_id}"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_userNickName"
+            tools:text="kimdami" />
 
-            <TextView
-                android:id="@+id/txt_userId"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textSize="16dp"
-                android:ellipsize="end"
-                android:gravity="center_vertical | center_horizontal"
-                tools:text="kimdami"/>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         <ImageView
@@ -60,8 +65,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear"
+            app:layout_constraintTop_toBottomOf="@id/txt_userId"
             app:layout_constraintVertical_weight="5"
+            app:imageFromUrlHttp="@{broadInfo.broad_thumb}"
             tools:src="@tools:sample/avatars"/>
 
 

@@ -52,6 +52,8 @@ dependencies {
     implementation(deps.androidx.navigation.fragment.ktx)
 
     implementation(deps.git.glide)
+    kapt(deps.git.glide.bumptech)
+    kapt("android.arch.lifecycle:compiler:1.0.0")
 
     implementation(deps.hilt.android)
     implementation(deps.hilt.android.testing)
@@ -81,4 +83,5 @@ dependencies {
     implementation(deps.facebook.shimmer)
 
     implementation(deps.androidx.swipe)
+
 }
