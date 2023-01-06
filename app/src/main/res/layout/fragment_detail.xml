@@ -20,7 +20,7 @@
             android:id="@+id/img_profile"
             android:layout_width="120dp"
             android:layout_height="120dp"
-
+            app:imageFromUrlCircleCrop="@{broadInfo.profile_img}"
             app:layout_constraintBottom_toTopOf="@+id/img_thumb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
