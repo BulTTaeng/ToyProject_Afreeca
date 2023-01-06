@@ -52,8 +52,7 @@ dependencies {
     implementation(deps.androidx.navigation.fragment.ktx)
 
     implementation(deps.git.glide)
-    kapt(deps.git.glide.bumptech)
-    kapt("android.arch.lifecycle:compiler:1.0.0")
+    annotationProcessor(deps.git.glide.bumptech)
 
     implementation(deps.hilt.android)
     implementation(deps.hilt.android.testing)

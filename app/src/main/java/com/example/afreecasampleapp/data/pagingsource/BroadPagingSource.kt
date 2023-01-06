@@ -22,7 +22,7 @@ class BroadPagingSource(
             val broads = response.broad
             LoadResult.Page(
                 data = broads,
-                prevKey = if (page == 0) null else page - 1,
+                prevKey = if (page == PAGE_INDEX) null else page - 1,
                 nextKey = if (page == response.total_cnt) null else page + 1
             )
         } catch (exception: Exception) {
