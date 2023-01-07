@@ -17,26 +17,14 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-class FirstFragment : Fragment() {
-
-    private lateinit var binding: FragmentFirstBinding
-    private lateinit var mainActivity: MainActivity
-    val viewModel : AfreecaTvViewModel by activityViewModels()
-    private var broadListJob: Job? = null
-    private val adapter = BroadPagingAdapter()
-
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-    }
+class FirstFragment : RecycleBaseFragment<FragmentFirstBinding>(R.layout.fragment_first) {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentFirstBinding.inflate(inflater, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
         binding.fragment = this
         return binding.root
@@ -44,21 +32,7 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
-        if(viewModel.currentBroadLists[0] == null) getCategoryBroads(0)
-    }
-
-    private fun initRecycler(){
-        binding.recyclerFirst.adapter = adapter
-        binding.recyclerFirst.layoutManager = LinearLayoutManager(mainActivity)
-    }
-
-    fun getCategoryBroads(tapId: Int) {
-        broadListJob?.cancel()
-        broadListJob = lifecycleScope.launch {
-            viewModel.getBroadList(tapId).collectLatest {
-                adapter.submitData(it)
-            }
-        }
+        initRecycler(binding.recyclerFirst)
+        getBroadListsIfNotNull(0)
     }
 }

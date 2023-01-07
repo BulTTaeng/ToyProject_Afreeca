@@ -32,7 +32,8 @@
 `2023-01-07`  
 - recycler view item view 수정
 - paging data source 분할
-- data source들 wrap
+- paging data source들 wrap
+- Fragment 코드 중복 해결
 
 </details>
 
@@ -120,9 +121,23 @@ Fragment의 onCreateView에서 pagingData를 불러오는 작업을 하면 상�
 따라서 viewModel에 data를 만들어서 null check로 값을 불러 오거나, swipe 했을 때만 값을 불러오게 수정
 
 
+## ViewModel과 View의 관계   
 
+항상 category 목록을 가지고 있어야 한다.
+category 목록은 메인 페이지의 모든 fragment가 사용한다.
+=> activity의 viewModel 공유 방식 선택
 
 ---
+
+## 구조  
+
+SingleActivity  
+메인 페이지에 있는 Fragment는 매우 유사=> RecycleBaseFrament 작성 & 상속
+여러개의 Paging data source  -> PagingBaseClass 상속  
+activity viewModel로 카테고리 데이터 공유
+
+---
+
 ## ISSUE
 - First, Second, Third Fragment 코드 중복이 너무 많음.  
 Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.

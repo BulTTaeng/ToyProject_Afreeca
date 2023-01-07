@@ -18,48 +18,22 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-class ThirdFragment : Fragment() {
+class ThirdFragment : RecycleBaseFragment<FragmentThirdBinding>(R.layout.fragment_third) {
 
-    private lateinit var binding: FragmentThirdBinding
-    private lateinit var mainActivity: MainActivity
-    val viewModel : AfreecaTvViewModel by activityViewModels()
-
-    private var broadListJob: Job? = null
-    private val adapter = BroadPagingAdapter()
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mainActivity = context as MainActivity
-    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentThirdBinding.inflate(inflater, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
         binding.fragment = this
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
-        getCategoryBroads(2)
-    }
-
-    private fun initRecycler(){
-        binding.recyclerThird.adapter = adapter
-        binding.recyclerThird.layoutManager = LinearLayoutManager(mainActivity)
-    }
-
-    fun getCategoryBroads(tapId: Int) {
-        broadListJob?.cancel()
-        broadListJob = lifecycleScope.launch {
-            viewModel.getBroadList(tapId).collectLatest {
-                adapter.submitData(it)
-            }
-        }
+        initRecycler(binding.recyclerThird)
+        getBroadListsIfNotNull(2)
     }
 }

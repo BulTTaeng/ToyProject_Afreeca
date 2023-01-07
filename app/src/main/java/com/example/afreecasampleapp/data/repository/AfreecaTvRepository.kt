@@ -32,14 +32,14 @@ class AfreecaTvRepository @Inject constructor(private val service: AfreecaTvApiS
         }
 
         return Pager(
-            config = PagingConfig(enablePlaceholders = false, pageSize = PAGE_SIZE),
+            config = PagingConfig(enablePlaceholders = false, pageSize = PAGING_PAGE_SIZE),
             pagingSourceFactory = { pagingDataSource }
         ).flow
 
     }
 
     companion object {
-        const val PAGE_SIZE = 20
+        const val PAGING_PAGE_SIZE = 60
     }
 
 }
