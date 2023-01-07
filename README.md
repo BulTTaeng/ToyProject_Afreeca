@@ -34,6 +34,7 @@
 - paging data source 분할
 - paging data source들 wrap
 - Fragment 코드 중복 해결
+- recycler item에 carview 적용
 
 </details>
 

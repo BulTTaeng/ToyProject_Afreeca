@@ -83,4 +83,6 @@ dependencies {
 
     implementation(deps.androidx.swipe)
 
+    implementation(deps.androidx.cardview)
+
 }

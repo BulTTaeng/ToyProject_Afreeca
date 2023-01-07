@@ -26,6 +26,7 @@ viewPager = "1.0.0"
 circleImage = "3.1.0"
 shimmer = "0.5.0"
 swipe = "1.1.0"
+cardview = "1.0.0"
 
 
 [libraries]
@@ -101,6 +102,9 @@ facebook-shimmer = {module = "com.facebook.shimmer:shimmer", version.ref = "shim
 
 #swipeview
 androidx-swipe = {module = "androidx.swiperefreshlayout:swiperefreshlayout" , version.ref = "swipe"}
+
+#cardview
+androidx-cardview = {module = "androidx.cardview:cardview" , version.ref = "cardview"}
 
 [bundles]
 coroutines = ["kotlinx-coroutine-core" , "kotlinx-coroutine"]
