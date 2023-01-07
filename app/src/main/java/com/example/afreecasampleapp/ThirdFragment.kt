@@ -54,10 +54,10 @@ class ThirdFragment : Fragment() {
         binding.recyclerThird.layoutManager = LinearLayoutManager(mainActivity)
     }
 
-    fun getCategoryBroads(categoryId: Int) {
+    fun getCategoryBroads(tapId: Int) {
         broadListJob?.cancel()
         broadListJob = lifecycleScope.launch {
-            viewModel.getBroadList(categoryId).collectLatest {
+            viewModel.getBroadList(tapId).collectLatest {
                 adapter.submitData(it)
             }
         }

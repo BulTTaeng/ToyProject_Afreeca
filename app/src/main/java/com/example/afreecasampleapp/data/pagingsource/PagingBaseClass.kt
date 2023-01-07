@@ -1,31 +1,29 @@
 package com.example.afreecasampleapp.data.pagingsource
 
-import android.nfc.tech.MifareUltralight
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.afreecasampleapp.api.AfreecaTvApiService
 import com.example.afreecasampleapp.data.Broad
-import com.example.afreecasampleapp.data.repository.AfreecaTvRepository.Companion.PAGE_SIZE
+import com.example.afreecasampleapp.data.repository.AfreecaTvRepository
 
 
-private const val PAGE_INDEX = 1
-
-class BroadPagingSource1(
+open class PagingBaseClass(
     private val service: AfreecaTvApiService,
-    private val categoryId: Int
+    open val categoryId: Int
 ) : PagingSource<Int, Broad>() {
 
+    open val pageIndex: Int get() { return 1}
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Broad> {
-        val page = params.key ?: PAGE_INDEX
+        val page = params.key ?: pageIndex
 
         return try {
             val response = service.broadList(select_value = categoryId, pageNo = page)
             val broads = response.broad
             LoadResult.Page(
                 data = broads,
-                prevKey = if (page == PAGE_INDEX) null else page - 1,
-                nextKey = if (page == response.total_cnt/ PAGE_SIZE + 1) null else page + 1
+                prevKey = if (page == pageIndex) null else page - 1,
+                nextKey = if (page == response.total_cnt/ AfreecaTvRepository.PAGE_SIZE + 1) null else page + 1
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)
