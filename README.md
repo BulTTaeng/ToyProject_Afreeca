@@ -29,6 +29,9 @@
 - 디테일 페이지 구현
 - glide error 해결
 
+`2023-01-07`  
+- recycler view item view 수정
+
 </details>
 
 ---  
@@ -121,4 +124,4 @@ Fragment의 onCreateView에서 pagingData를 불러오는 작업을 하면 상�
 ## ISSUE
 - First, Second, Third Fragment 코드 중복이 너무 많음.  
 Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.
-- Glide로 profile Image를 불러 올 때만 이상하게 random하게 안되는 현상이 있음 -> 실패하면 handler로 다시 Glide 요청하는 방식으로 해결
+- Glide로 profile Image를 불러 올 때만 이상하게 random하게 안되는 현상이 있음 -> 실패하면 handler로 다시 Glide 요청하는 방식으로 해결, 다른 library는 gif지원이 되지 않아 보류

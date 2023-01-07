@@ -4,6 +4,9 @@ import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -14,15 +17,13 @@ import com.example.afreecasampleapp.utility.event.MutableEventFlow
 import com.example.afreecasampleapp.utility.event.asEventFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AfreecaTvViewModel @Inject constructor(
-    private val repository: AfreecaTvRepository
+    private val repository: AfreecaTvRepository,
 ) : ViewModel() {
 
     private val _broadData = MutableEventFlow<Event>()
@@ -61,8 +62,8 @@ class AfreecaTvViewModel @Inject constructor(
 
 
     sealed class Event {
-        data class BroadCategories(val mountains : List<BroadCategory>) : Event()
-        data class BroadLists(val mountains : ArrayList<Broad>) : Event()
+        data class BroadCategories(val broadCategories : List<BroadCategory>) : Event()
+        data class BroadLists(val broadLists : ArrayList<Broad>) : Event()
     }
 
 }
