@@ -43,7 +43,7 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecycler()
-        getCategoryBroads(viewModel.categoryInfo[1].cate_no)
+        getCategoryBroads(1)
 
     }
 

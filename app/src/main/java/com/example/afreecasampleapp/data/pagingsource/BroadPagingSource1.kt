@@ -1,5 +1,6 @@
 package com.example.afreecasampleapp.data.pagingsource
 
+import android.nfc.tech.MifareUltralight
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -10,7 +11,7 @@ import com.example.afreecasampleapp.data.repository.AfreecaTvRepository.Companio
 
 private const val PAGE_INDEX = 1
 
-class BroadPagingSource(
+class BroadPagingSource1(
     private val service: AfreecaTvApiService,
     private val categoryId: Int
 ) : PagingSource<Int, Broad>() {
@@ -24,7 +25,7 @@ class BroadPagingSource(
             LoadResult.Page(
                 data = broads,
                 prevKey = if (page == PAGE_INDEX) null else page - 1,
-                nextKey = if (page == response.total_cnt/PAGE_SIZE + 1) null else page + 1
+                nextKey = if (page == response.total_cnt/ PAGE_SIZE + 1) null else page + 1
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)

@@ -15,7 +15,9 @@ import com.example.afreecasampleapp.data.pagingsource.BroadPagingSource
 import com.example.afreecasampleapp.databinding.FragmentFirstBinding
 import com.example.afreecasampleapp.viewmodels.AfreecaTvViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.launch
 
 
@@ -47,7 +49,7 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecycler()
-        getCategoryBroads(viewModel.categoryInfo[0].cate_no)
+        if(viewModel.currentBroadLists[0] == null) getCategoryBroads(0)
     }
 
     private fun initRecycler(){
@@ -55,10 +57,10 @@ class FirstFragment : Fragment() {
         binding.recyclerFirst.layoutManager = LinearLayoutManager(mainActivity)
     }
 
-    fun getCategoryBroads(categoryId: Int) {
+    fun getCategoryBroads(tapId: Int) {
         broadListJob?.cancel()
         broadListJob = lifecycleScope.launch {
-            viewModel.getBroadList(categoryId).collectLatest {
+            viewModel.getBroadList(tapId).collectLatest {
                 adapter.submitData(it)
             }
         }
