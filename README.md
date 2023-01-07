@@ -108,6 +108,19 @@ MVVM패턴으로 작성
 
 
 ---
+
+## 효율성   
+
+Fragment의 onCreateView에서 pagingData를 불러오는 작업을 하면 상세 페이지 -> 메인 페이지 상황에서도 다시 api를 호출하게 됨.  
+
+상세 페이지를 Activity로 만들면 해결되지만, 자주 만들어 질 수 있는 상세 페이지의 특성 상 효율성 측면에서 Fragment를 사용하는게 더 좋은 해결책  
+
+따라서 viewModel에 data를 만들어서 null check로 값을 불러 오거나, swipe 했을 때만 값을 불러오게 수정
+
+
+
+
+---
 ## ISSUE
 - First, Second, Third Fragment 코드 중복이 너무 많음.  
 Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.
