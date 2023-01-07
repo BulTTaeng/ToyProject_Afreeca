@@ -1,12 +1,7 @@
 package com.example.afreecasampleapp.data.pagingsource
 
-import android.nfc.tech.MifareUltralight
-import android.util.Log
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
 import com.example.afreecasampleapp.api.AfreecaTvApiService
 import com.example.afreecasampleapp.data.Broad
-import com.example.afreecasampleapp.data.repository.AfreecaTvRepository.Companion.PAGE_SIZE
 
 
 class SecondBroadPagingSource(

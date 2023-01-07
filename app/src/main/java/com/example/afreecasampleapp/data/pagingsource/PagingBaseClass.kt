@@ -1,13 +1,14 @@
 package com.example.afreecasampleapp.data.pagingsource
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.afreecasampleapp.api.AfreecaTvApiService
 import com.example.afreecasampleapp.data.Broad
-import com.example.afreecasampleapp.data.repository.AfreecaTvRepository
+import com.example.afreecasampleapp.data.repository.AfreecaTvRepository.Companion.PAGING_PAGE_SIZE
 
 
-open class PagingBaseClass(
+abstract class PagingBaseClass(
     private val service: AfreecaTvApiService,
     open val categoryId: Int
 ) : PagingSource<Int, Broad>() {
@@ -23,7 +24,7 @@ open class PagingBaseClass(
             LoadResult.Page(
                 data = broads,
                 prevKey = if (page == pageIndex) null else page - 1,
-                nextKey = if (page == response.total_cnt/ AfreecaTvRepository.PAGE_SIZE + 1) null else page + 1
+                nextKey = if (page > 1 && (page > response.total_cnt/response.broad.size)) null else page + 1
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)

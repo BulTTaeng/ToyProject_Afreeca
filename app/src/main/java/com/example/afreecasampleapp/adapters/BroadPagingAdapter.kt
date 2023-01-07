@@ -18,8 +18,6 @@ import com.example.afreecasampleapp.databinding.ItemBroadViewBinding
 
 class BroadPagingAdapter : PagingDataAdapter<Broad, BroadPagingAdapter.BroadViewHolder>(BroadDiffCallback()) {
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BroadViewHolder {
         return BroadViewHolder(
             ItemBroadViewBinding.inflate(
