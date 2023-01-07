@@ -1,10 +1,5 @@
 package com.example.afreecasampleapp.viewmodels
 
-import android.util.Log
-import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -63,7 +58,6 @@ class AfreecaTvViewModel @Inject constructor(
 
     sealed class Event {
         data class BroadCategories(val broadCategories : List<BroadCategory>) : Event()
-        data class BroadLists(val broadLists : ArrayList<Broad>) : Event()
     }
 
 }
