@@ -68,7 +68,7 @@ class ViewPagerHomeFragment : Fragment() {
     }
 
     fun handleEvent(event: AfreecaTvViewModel.Event) = when (event) {
-        is AfreecaTvViewModel.Event.BroadCategories -> setAdapterText(event.mountains)
+        is AfreecaTvViewModel.Event.BroadCategories -> setAdapterText(event.broadCategories)
         else ->{}
     }
 }

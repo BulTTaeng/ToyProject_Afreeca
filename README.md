@@ -31,6 +31,8 @@
 
 `2023-01-07`  
 - recycler view item view 수정
+- paging data source 분할
+- data source들 wrap
 
 </details>
 

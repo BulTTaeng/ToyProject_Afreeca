@@ -1,5 +1,6 @@
 package com.example.afreecasampleapp.viewmodels
 
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,7 @@ import com.example.afreecasampleapp.utility.event.asEventFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -48,11 +50,16 @@ class AfreecaTvViewModel @Inject constructor(
     fun getBroadList(tapId: Int): Flow<PagingData<Broad>> {
         isLoading.set(true)
         currentCategoryId = categoryInfo[tapId].cate_no
-        val newResult: Flow<PagingData<Broad>> =
-            repository.getBroadList(tapId , currentCategoryId).cachedIn(viewModelScope)
-        currentBroadLists[tapId] = newResult
-        isLoading.set(false)
-        return newResult
+        try{
+            currentBroadLists[tapId] = repository.getBroadList(tapId , currentCategoryId).cachedIn(viewModelScope)
+            return currentBroadLists[tapId]!!
+        }catch (e : Exception){
+            Log.e("getBroadList" , e.toString())
+            return emptyFlow()
+        }finally {
+            isLoading.set(false)
+        }
+
     }
 
 

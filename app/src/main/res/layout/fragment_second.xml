@@ -14,7 +14,7 @@
         android:id="@+id/swipe_second"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:onRefreshListener="@{() -> fragment.getCategoryBroads(2)}"
+        app:onRefreshListener="@{() -> fragment.getCategoryBroads(1)}"
         app:refreshing="@{viewModel.isLoading}">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_second"
