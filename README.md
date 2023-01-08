@@ -36,6 +36,10 @@
 - Fragment 코드 중복 해결
 - recycler item에 carview 적용
 
+`2023-01-08`  
+- Paging end page 조절
+- Paging footer 추가
+
 </details>
 
 ---  
