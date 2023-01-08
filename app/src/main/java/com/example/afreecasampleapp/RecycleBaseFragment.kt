@@ -15,6 +15,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.afreecasampleapp.adapters.BroadPagingAdapter
+import com.example.afreecasampleapp.adapters.PagingLoadStateAdapter
 import com.example.afreecasampleapp.data.Broad
 import com.example.afreecasampleapp.viewmodels.AfreecaTvViewModel
 import kotlinx.coroutines.Job
@@ -44,8 +45,14 @@ abstract class RecycleBaseFragment<T: ViewDataBinding>(@LayoutRes private val la
     }
 
     protected fun initRecycler(recyclerView: RecyclerView){
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(mainActivity)
+        binding.apply {
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(mainActivity)
+            recyclerView.setHasFixedSize(true)
+            recyclerView.adapter = adapter.withLoadStateFooter(
+                footer = PagingLoadStateAdapter{adapter.retry()}
+            )
+        }
     }
 
     protected fun getBroadListsIfNotNull(tabId : Int){
