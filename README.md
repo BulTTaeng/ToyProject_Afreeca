@@ -39,6 +39,7 @@
 `2023-01-08`  
 - Paging end page 조절
 - Paging footer 추가
+- 네트워크 연결 check 추가
 
 </details>
 
