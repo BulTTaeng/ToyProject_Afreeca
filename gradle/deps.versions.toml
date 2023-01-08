@@ -27,6 +27,7 @@ circleImage = "3.1.0"
 shimmer = "0.5.0"
 swipe = "1.1.0"
 cardview = "1.0.0"
+archCore = "2.1.0"
 
 
 [libraries]
@@ -105,6 +106,9 @@ androidx-swipe = {module = "androidx.swiperefreshlayout:swiperefreshlayout" , ve
 
 #cardview
 androidx-cardview = {module = "androidx.cardview:cardview" , version.ref = "cardview"}
+
+#test
+androidx-arch-core = {module = "androidx.arch.core:core-testing" , version.ref = "archCore"}
 
 [bundles]
 coroutines = ["kotlinx-coroutine-core" , "kotlinx-coroutine"]

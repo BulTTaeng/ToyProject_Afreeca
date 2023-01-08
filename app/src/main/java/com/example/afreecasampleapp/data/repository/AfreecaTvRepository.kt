@@ -20,7 +20,7 @@ class AfreecaTvRepository @Inject constructor(private val service: AfreecaTvApiS
         emit(service.broadCategoryList().broad_category)
     }.flowOn(Dispatchers.IO)
 
-    fun getBroadList(tabId: Int, categoryId: Int): kotlinx.coroutines.flow.Flow<PagingData<Broad>> {
+    fun getBroadList(categoryId: Int): kotlinx.coroutines.flow.Flow<PagingData<Broad>> {
         pagingDataSource = BroadPagingSource(service, categoryId)
 
         return Pager(

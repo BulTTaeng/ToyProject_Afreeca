@@ -40,6 +40,8 @@
 - Paging end page 조절
 - Paging footer 추가
 - 네트워크 연결 check 추가
+- Unit test 추가
+
 
 </details>
 
@@ -58,7 +60,7 @@
 
 1번 :
 
-    카테고리를 탭 할 때 마다 network 작업 이루어짐.
+    View가 create 될 때 마다 network 작업 이루어짐.
 
 2번 : 
 
@@ -68,7 +70,8 @@
 
 3번 : 
 
-    최신 버전의 navigation을 사용하되, viewPager + Fragment를 사용하여 매번 network 작업이 이루어지지 않게 설정
+    최신 버전의 navigation을 사용하되, viewPager + Fragment를 사용하여 매번 network 작업이 이루어지지 않게 설정  
+    Swipe view는 필요
 
 
 ==> 절충안 채택
@@ -123,12 +126,16 @@ Fragment의 onCreateView에서 pagingData를 불러오는 작업을 하면 상�
 
 상세 페이지를 Activity로 만들면 해결되지만, 자주 만들어 질 수 있는 상세 페이지의 특성 상 효율성 측면에서 Fragment를 사용하는게 더 좋은 해결책  
 
-따라서 viewModel에 data를 만들어서 null check로 값을 불러 오거나, swipe 했을 때만 값을 불러오게 수정
+따라서 viewModel에 data를 만들어서 null check로 값을 불러 오거나, swipe 했을 때만 값을 불러오게 수정  
 
+Network Module은 Singleton으로 한번만 create  
+
+repeatOnStarted => view를 내리면 IO 작업 중지  
+Event caching => EventFlowSlot를 사용해서 consume되지 않은 flow 가지고 있음
 
 ## ViewModel과 View의 관계   
 
-항상 category 목록을 가지고 있어야 한다.
+category 목록을 가지고 있어야 한다.
 category 목록은 메인 페이지의 모든 fragment가 사용한다.
 => activity의 viewModel 공유 방식 선택
 
@@ -145,5 +152,5 @@ activity viewModel로 카테고리 데이터 공유
 
 ## ISSUE
 - First, Second, Third Fragment 코드 중복이 너무 많음.  
-Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음.
+Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음. -> base Fragment 코드로 해결
 - Glide로 profile Image를 불러 올 때만 이상하게 random하게 안되는 현상이 있음 -> 실패하면 handler로 다시 Glide 요청하는 방식으로 해결, 다른 library는 gif지원이 되지 않아 보류
