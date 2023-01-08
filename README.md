@@ -48,6 +48,7 @@
 
 1. 2.4.0-aplha 버전 이후 라이브러리 사용
 2. 이전 버전 사용해서 Fragment Manager로 transaction 조절
+3. 절충안
 
 
 1번 :
@@ -60,17 +61,18 @@
     swipe view를 사용해 swipe하면 새로운 데이터를 가져오게 해야 함.
     
 
+3번 : 
 
-사용자 입장에서 새로운 탭을 탭 할 때 마다 업데이트가 이루어져야 앱이 잘 작동하는지 확인 할 수 있음.  
-
-잦은 network 작업에 대한 부담은 paging을 적용하여 해결할 수 있음  
+    최신 버전의 navigation을 사용하되, viewPager + Fragment를 사용하여 매번 network 작업이 이루어지지 않게 설정
 
 
-==> 1번 방법 채택
+==> 절충안 채택
 
 </br>
 
-Loading 시간을 최대한 줄이기 위해서 각 카테고리마다 하나의 Fragment 배정
+Loading 시간을 줄이기 위해서 각 카테고리마다 하나의 Fragment 배정
+
+맨 처음에만 data를 불러오게 함.  
 
 상단의 tabar -> TabLayout 사용
 ViewPager로 넘어가는 애니메이션 추가 & Framgent 관리
@@ -95,7 +97,7 @@ ViewPager2 + TabLayout 구조
 따라서 화면 전환 & overhead를 고려 Fragment를 사용하기로 결정.  
 또한 safe args 사용도 가능.  
 
-
+==> Fragment 사용
 
 ---  
 
@@ -107,9 +109,6 @@ MVVM패턴으로 작성
 - 코드량을 줄일 수 있음
 - 확장성이 좋음
 - 테스트 용이
-
-
-
 
 ---
 
