@@ -9,7 +9,7 @@ plugins {
 
 android {
     compileSdk 33
-
+    testOptions.unitTests.includeAndroidResources = true
     defaultConfig {
         applicationId "com.example.afreecasampleapp"
         minSdk 23
@@ -40,13 +40,27 @@ android {
 }
 
 dependencies {
+
     implementation(deps.androidx.core.ktx)
     implementation(deps.androidx.appcompat)
     implementation(deps.androidx.material)
     implementation(deps.androidx.constraintlayout)
-    testImplementation(deps.test.junit)
+    implementation(deps.androidx.test.junit)
+
+    androidTestImplementation(deps.test.junit)
     androidTestImplementation(deps.androidx.test.junit)
     androidTestImplementation(deps.androidx.espresso)
+
+    implementation(deps.androidx.arch.core)
+    androidTestImplementation(deps.androidx.arch.core)
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    testImplementation "com.google.truth:truth:1.1.3"
+    testImplementation "org.robolectric:robolectric:4.9"
+
+
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    androidTestImplementation "com.google.truth:truth:1.1.3"
 
     implementation(deps.androidx.navigation)
     implementation(deps.androidx.navigation.fragment.ktx)

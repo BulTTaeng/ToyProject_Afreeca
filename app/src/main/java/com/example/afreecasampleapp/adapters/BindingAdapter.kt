@@ -15,15 +15,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.example.afreecasampleapp.R
 
-@BindingAdapter("isGone")
-fun bindIsGone(view: View, isGone: Boolean) {
-    view.visibility = if (isGone) {
-        View.GONE
-    } else {
-        View.VISIBLE
-    }
-}
-
 @BindingAdapter("imageFromUrlHttp")
 fun bindImageFromUrlHttp(view: ImageView, imageUrl: String?) {
     if (imageUrl.isNullOrEmpty()) {

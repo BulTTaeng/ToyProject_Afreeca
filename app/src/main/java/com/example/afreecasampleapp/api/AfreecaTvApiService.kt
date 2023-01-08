@@ -1,6 +1,7 @@
 package com.example.afreecasampleapp.api
 
 import com.example.afreecasampleapp.BuildConfig
+import com.example.afreecasampleapp.api.Key.Companion.API_KEY
 import com.example.afreecasampleapp.data.response.AfreecaBroadCategoryListResponse
 import com.example.afreecasampleapp.data.response.AfreecaBroadListResponse
 import okhttp3.OkHttpClient
@@ -14,14 +15,14 @@ interface AfreecaTvApiService {
 
     @GET("broad/list")
     suspend fun broadList(
-        @Query("client_id") clientId: String = "af_mobilelab_dev_e0f147f6c034776add2142b425e81777",
+        @Query("client_id") clientId: String = API_KEY,
         @Query("page_no") pageNo : Int,
         @Query("select_value") select_value : Int
     ): AfreecaBroadListResponse
 
     @GET("broad/category/list")
     suspend fun broadCategoryList(
-        @Query("client_id") clientId: String = "af_mobilelab_dev_e0f147f6c034776add2142b425e81777",
+        @Query("client_id") clientId: String = API_KEY,
         @Query("locale") locale: String = "ko_KR"
     ): AfreecaBroadCategoryListResponse
 

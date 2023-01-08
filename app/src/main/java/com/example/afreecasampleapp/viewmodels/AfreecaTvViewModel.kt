@@ -51,7 +51,7 @@ class AfreecaTvViewModel @Inject constructor(
         isLoading.set(true)
         currentCategoryId = categoryInfo[tapId].cate_no
         try{
-            currentBroadLists[tapId] = repository.getBroadList(tapId , currentCategoryId).cachedIn(viewModelScope)
+            currentBroadLists[tapId] = repository.getBroadList(currentCategoryId).cachedIn(viewModelScope)
             return currentBroadLists[tapId]!!
         }catch (e : Exception){
             Log.e("getBroadList" , e.toString())
