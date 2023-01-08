@@ -4,6 +4,12 @@
 **Contributor** : `BulTTaeng(BulTTaeng)`  
 **Language** : Kotlin   
 
+---
+
+## 시연 영상
+
+![](https://github.com/BulTTaeng/afreeca/blob/master/testing.gif)
+
 ---  
 
 ## History
