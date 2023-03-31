@@ -27,7 +27,7 @@ class AfreecaTvViewModel @Inject constructor(
 
     var categoryInfo = ArrayList<BroadCategory>()
     var currentCategoryId : Int = -1
-    val currentBroadLists = ArrayList<Flow<PagingData<Broad>>?>(3)
+    val currentBroadLists = ArrayList<StateFlow<PagingData<Broad>?>?>(3)
 
     //private val _myUiState = MutableStateFlow<List<BroadCategory>>(listOf(BroadCategory("a",1)))
     //val myUiState: StateFlow<List<BroadCategory>> = _myUiState
@@ -51,12 +51,16 @@ class AfreecaTvViewModel @Inject constructor(
         }
     }
 
-    fun getBroadList(tapId: Int): Flow<PagingData<Broad>> {
+    fun getBroadList(tapId: Int): StateFlow<PagingData<Broad>?>? {
         isLoading.set(true)
         currentCategoryId = categoryInfo[tapId].cate_no
-        try{
-            currentBroadLists[tapId] = repository.getBroadList(currentCategoryId).cachedIn(viewModelScope)
-            return currentBroadLists[tapId]!!
+        return try{
+            currentBroadLists[tapId] = repository.getBroadList(currentCategoryId)
+                .cachedIn(viewModelScope)
+                .stateIn(initialValue = null,
+                    started = SharingStarted.WhileSubscribed(1000),
+                    scope = viewModelScope)
+            currentBroadLists[tapId]!!
         }catch (e : Exception){
             Log.e("getBroadList" , e.toString())
             return emptyFlow()
