@@ -1,6 +1,6 @@
 # Afreeca tv pre-assignment
 
-**Description** : 아프리카tv 사전과제  
+**Description** : 아프리카tv api를 사용한 토이 프로젝트  
 **Contributor** : `BulTTaeng(BulTTaeng)`  
 **Language** : Kotlin   
 
