@@ -13,7 +13,7 @@ import com.example.afreecasampleapp.viewmodels.AfreecaTvViewModel
 
 class DetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentDetailBinding
+    private var binding: FragmentDetailBinding? = null
     private val args by navArgs<DetailFragmentArgs>()
     val viewModel : AfreecaTvViewModel by activityViewModels()
 
@@ -23,8 +23,13 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-        binding.broadInfo = args.selectedBroad
-        return binding.root
+        binding?.broadInfo = args.selectedBroad
+        return binding!!.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 

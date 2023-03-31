@@ -10,6 +10,7 @@ import com.example.afreecasampleapp.data.pagingsource.PagingBaseClass
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 class AfreecaTvRepository @Inject constructor(private val service: AfreecaTvApiService) {
@@ -20,14 +21,16 @@ class AfreecaTvRepository @Inject constructor(private val service: AfreecaTvApiS
         emit(service.broadCategoryList().broad_category)
     }.flowOn(Dispatchers.IO)
 
-    fun getBroadList(categoryId: Int): kotlinx.coroutines.flow.Flow<PagingData<Broad>> {
+    fun getBroadList(categoryId: Int) = flow<PagingData<Broad>> {
         pagingDataSource = BroadPagingSource(service, categoryId)
 
-        return Pager(
+        Pager(
             config = PagingConfig(enablePlaceholders = false, pageSize = PAGING_PAGE_SIZE, prefetchDistance = 1),
             pagingSourceFactory = { pagingDataSource }
-        ).flow
-    }
+        ).flow.collect{
+            emit(it)
+        }
+    }.flowOn(Dispatchers.IO)
 
     companion object {
         const val PAGING_PAGE_SIZE = 60

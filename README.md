@@ -119,7 +119,7 @@ ViewPager2 + TabLayout 구조
 
 MVVM패턴으로 작성 
 
-- View와 Presenter의 결합도를 낮출 수 있음
+- View와 Model간의 결합도를 낮출 수 있음
 - 코드량을 줄일 수 있음
 - 확장성이 좋음
 - 테스트 용이

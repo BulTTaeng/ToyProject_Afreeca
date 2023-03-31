@@ -24,7 +24,9 @@ import kotlinx.coroutines.launch
 
 abstract class RecycleBaseFragment<T: ViewDataBinding>(@LayoutRes private val layoutId: Int) :Fragment() {
 
-    protected lateinit var binding: T
+    private var _binding: T? = null
+    val binding
+        get() = _binding!!
     private val adapter = BroadPagingAdapter()
     val viewModel : AfreecaTvViewModel by activityViewModels()
     protected lateinit var mainActivity: MainActivity
@@ -40,9 +42,15 @@ abstract class RecycleBaseFragment<T: ViewDataBinding>(@LayoutRes private val la
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         return binding.root
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
     protected fun initRecycler(recyclerView: RecyclerView){
         binding.apply {

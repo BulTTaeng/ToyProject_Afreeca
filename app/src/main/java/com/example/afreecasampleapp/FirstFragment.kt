@@ -35,4 +35,5 @@ class FirstFragment : RecycleBaseFragment<FragmentFirstBinding>(R.layout.fragmen
         initRecycler(binding.recyclerFirst)
         getBroadListsIfNotNull(0)
     }
+
 }

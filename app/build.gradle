@@ -99,4 +99,7 @@ dependencies {
 
     implementation(deps.androidx.cardview)
 
+    //Does not work for me
+    //implementation(deps.git.kirich1409)
+
 }

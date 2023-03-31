@@ -30,6 +30,7 @@ cardview = "1.0.0"
 archCore = "2.1.0"
 truth = "1.1.3"
 robolectric = "4.9"
+viewBindingPropertyDelegate = "1.5.8"
 
 
 
@@ -121,6 +122,9 @@ org-robolectric = {module = "org.robolectric:robolectric" , version.ref = "robol
 
 #truth
 google-truth = {module = "com.google.truth:truth" , version.ref = "truth"}
+
+#viewBinding memeoryLeak
+git-kirich1409 = {module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection" , version.ref = "viewBindingPropertyDelegate"}
 
 [bundles]
 coroutines = ["kotlinx-coroutine-core" , "kotlinx-coroutine"]

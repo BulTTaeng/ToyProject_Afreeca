@@ -12,9 +12,8 @@ import com.example.afreecasampleapp.data.repository.AfreecaTvRepository
 import com.example.afreecasampleapp.utility.event.MutableEventFlow
 import com.example.afreecasampleapp.utility.event.asEventFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +29,10 @@ class AfreecaTvViewModel @Inject constructor(
     var currentCategoryId : Int = -1
     val currentBroadLists = ArrayList<Flow<PagingData<Broad>>?>(3)
 
+    //private val _myUiState = MutableStateFlow<List<BroadCategory>>(listOf(BroadCategory("a",1)))
+    //val myUiState: StateFlow<List<BroadCategory>> = _myUiState
+
+
     val isLoading = ObservableBoolean()
 
     init {
@@ -40,8 +43,14 @@ class AfreecaTvViewModel @Inject constructor(
 
     fun getCategories(){
         viewModelScope.launch {
+            /*repository.getCategories().stateIn(
+                viewModelScope,
+                started = WhileSubscribed(5000),
+                initialValue = listOf(BroadCategory("a",1))
+            )*/
             repository.getCategories().collectLatest {
                 categoryInfo = it as ArrayList<BroadCategory>
+                //_myUiState.value = it
                 _broadData.emit(Event.BroadCategories(it))
             }
         }
