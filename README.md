@@ -155,6 +155,16 @@ pool과 cache를 위해 다음 Fragement로 만들어짐
 따라서 StateFlow를 사용하지 않고, flow를 사용해 변수에 paging 데이터를 저장함.
 
 
+## Why Glide and Coil?
+
+Recyclerview에서 image가 있을 경우 coil이 더 적은 메모리를 사용함
+따라서 Recyclerview안의 imageloader로는 coil 사용.
+하지만 gif일 수 도 있고 아닐 수도 있는 Detail Page의 profile image의 경우
+glide를 사용하면 가끔 잘 load하지 못하는 이슈가 있고, 
+Coil의 경우 transform 과 함께 사용하면 gif가 적용되지 않는 이슈가 있다.
+그래서 그 부분에서는 glide에 예외 처리 & 기본 이미지 설정과 함께
+glide를 사용하였다. 
+
 ## ViewModel과 View의 관계   
 
 category 목록을 가지고 있어야 한다.
