@@ -126,5 +126,6 @@ google-truth = {module = "com.google.truth:truth" , version.ref = "truth"}
 #viewBinding memeoryLeak
 git-kirich1409 = {module = "com.github.kirich1409:viewbindingpropertydelegate-noreflection" , version.ref = "viewBindingPropertyDelegate"}
 
+
 [bundles]
 coroutines = ["kotlinx-coroutine-core" , "kotlinx-coroutine"]
