@@ -48,6 +48,9 @@
 - 네트워크 연결 check 추가
 - Unit test 추가
 
+`2023-03-31`  
+- 메모리 누수 방지를 위한 view binding release
+- loading state 동기화
 
 </details>
 
@@ -138,6 +141,19 @@ Network Module은 Singleton으로 한번만 create
 
 repeatOnStarted => view를 내리면 IO 작업 중지  
 Event caching => EventFlowSlot를 사용해서 consume되지 않은 flow 가지고 있음
+
+
+## StateFlow?
+
+Data Holder로 stateFlow를 사용하지 않음.
+stateflow로 데이터를 hot stream으로 뿌려주게 되면, 새로운 데이터가 생기면 다시 뿌려줌
+현재 프로젝트 구조인 viewPager2 + tablayout을 사용하면 새로운 Fragemnt가 만들어 질 때,
+pool과 cache를 위해 다음 Fragement로 만들어짐
+그렇게 되면 다음 페이지의 정보가 현재 페이지에 적용이 되는 문제가 발생
+물론 pool이나 cache의 크기를 0으로 설정해 버릴 수도 있지만 그렇게 되면 RecyclerView adapter를
+사용하는 Viewpager2의 이점이 사라짐
+따라서 StateFlow를 사용하지 않고, flow를 사용해 변수에 paging 데이터를 저장함.
+
 
 ## ViewModel과 View의 관계   
 
