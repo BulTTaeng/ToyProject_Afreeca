@@ -3,14 +3,13 @@ package com.example.afreecasampleapp.adapters
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import coil.load
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.example.afreecasampleapp.R
@@ -20,29 +19,24 @@ fun bindImageFromUrlHttp(view: ImageView, imageUrl: String?) {
     if (imageUrl.isNullOrEmpty()) {
         return
     }
-
-    Glide.with(view.context)
-        .load("https:$imageUrl")
-        .into(view)
+    view.load("https:$imageUrl")
 }
 
 
 @BindingAdapter("imageFromUrlCircleCrop")
 fun bindImageFromUrlCircleCrop(view: ImageView, imageUrl: String?) {
-
-
     if (imageUrl.isNullOrEmpty()) {
         return
     }
 
     glideE(view , imageUrl)
-
 }
 
 
 fun glideE(view: ImageView, imageUrl: String?){
+
     Glide.with(view.context)
-        .load("https:" + imageUrl)
+        .load("https:$imageUrl")
         .listener(object : RequestListener<Drawable> {
             override fun onLoadFailed(
                 e: GlideException?,
