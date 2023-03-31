@@ -2,25 +2,36 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="fragment"
-            type="com.example.afreecasampleapp.SecondFragment"/>
+            type="com.example.afreecasampleapp.SecondFragment" />
+
         <variable
             name="viewModel"
-            type="com.example.afreecasampleapp.viewmodels.AfreecaTvViewModel"/>
+            type="com.example.afreecasampleapp.viewmodels.AfreecaTvViewModel" />
     </data>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_second"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:onRefreshListener="@{() -> fragment.getCategoryBroads(1)}"
         app:refreshing="@{viewModel.isLoading}">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_second"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.google.samples.apps.sunflower.GardenActivity" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_second"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </layout>

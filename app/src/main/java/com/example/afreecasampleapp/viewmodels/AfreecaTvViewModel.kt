@@ -60,8 +60,6 @@ class AfreecaTvViewModel @Inject constructor(
         }catch (e : Exception){
             Log.e("getBroadList" , e.toString())
             return emptyFlow()
-        }finally {
-            isLoading.set(false)
         }
 
     }
