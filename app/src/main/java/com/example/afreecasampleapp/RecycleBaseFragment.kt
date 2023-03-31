@@ -70,10 +70,9 @@ abstract class RecycleBaseFragment<T: ViewDataBinding>(@LayoutRes private val la
     fun getCategoryBroads(tapId: Int) {
         broadListJob?.cancel()
         broadListJob = lifecycleScope.launch {
-            viewModel.getBroadList(tapId)?.collectLatest {
-                it?.let{
-                    adapter.submitData(it)
-                }
+            viewModel.getBroadList(tapId).collectLatest {
+                viewModel.isLoading.set(false)
+                adapter.submitData(it)
             }
         }
     }

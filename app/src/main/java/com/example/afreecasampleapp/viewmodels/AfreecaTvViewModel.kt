@@ -63,9 +63,7 @@ class AfreecaTvViewModel @Inject constructor(
             currentBroadLists[tapId]!!
         }catch (e : Exception){
             Log.e("getBroadList" , e.toString())
-            null
-        }finally {
-            isLoading.set(false)
+            return emptyFlow()
         }
 
     }
