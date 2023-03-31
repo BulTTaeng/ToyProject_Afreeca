@@ -43,11 +43,6 @@ class AfreecaTvViewModel @Inject constructor(
 
     fun getCategories(){
         viewModelScope.launch {
-            /*repository.getCategories().stateIn(
-                viewModelScope,
-                started = WhileSubscribed(5000),
-                initialValue = listOf(BroadCategory("a",1))
-            )*/
             repository.getCategories().collectLatest {
                 categoryInfo = it as ArrayList<BroadCategory>
                 //_myUiState.value = it
