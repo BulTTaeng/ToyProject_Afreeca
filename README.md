@@ -185,4 +185,7 @@ activity viewModel로 카테고리 데이터 공유
 ## ISSUE
 - First, Second, Third Fragment 코드 중복이 너무 많음.  
 Di, abstract class, interface를 사용하면 OCP도 지킬 수 있을 것 같음. -> base Fragment 코드로 해결
-- Glide로 profile Image를 불러 올 때만 이상하게 random하게 안되는 현상이 있음 -> 실패하면 handler로 다시 Glide 요청하는 방식으로 해결, 다른 library는 gif지원이 되지 않아 보류
+- Glide로 profile Image를 불러 올 때만 이상하게 random하게 안되는 현상이 있음 -> 실패하면 handler로 다시 Glide 요청하는 방식으로 해결, 
+~~다른 library는 gif지원이 되지 않아 보류~~
+- Coil도 ImageLoader를 구현하면, gif지원이 됨. 하지만 transformation과 같이 사용하면 지원해 주지 않음.   
+(#32 이슈, https://coil-kt.github.io/coil/gifs/)
